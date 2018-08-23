@@ -5,14 +5,11 @@
 This lab will let you working in Linux and using Command Line Interfaces (CLIs). 
 Along the way, you'll get some practice with several important Linux sysadmin concepts, including
 
-  - copying the operating system onto an SD card
-  - logging in to a remote computer using SSH
-  - editing files in the terminal
-  - superuser acccounts and `sudo`
-  - installing packages with `apt-get`
-  - the `man` command
-  - connecting programs with pipes
-  - talking cows
+  - experience with the fundamental Linux commands
+  - understanding of directory hierarchies and file system organization
+  - understanding of relative and absolute paths
+  - understanding of git repos and organization
+  - experience with basic git commands
 
 
 ### Pre-lab prep
@@ -28,10 +25,12 @@ playing around with the basics of the Linux CLI and git.  To begin, watch these 
 7. [Creating and Deleting Directories](https://www.youtube.com/watch?v=AVzqquRi_-g)
 8. [Copying Files](https://www.youtube.com/watch?v=MYe58LbbfVU)
 9. [Moving/renaming Files and Directories]
+10. [git Architecture]
+11. [Basic git Commands]
 
 You may also want to refer to [Notes on Linux and the Terminal Environment](https://github.com/vsummet/IntroductionToComputerSystems/blob/master/Notes/01b-Linux_and_the_Shell.md) which you already read during the first week of class.
 
-### Beginning
+### Lab Activities
 0. Note that all the following steps assume you've already created your accounts and the connection as specified in the software setup discussed on the first day of class.  If you haven't done this, you need to follow the instructions on the software setup page before beginning.  See the link on the class calendar.
 1. Log into codeanywhere.  You should see the Fall2018 connection you created on the left hand sidebar.  Right click on the connection and choose "SSH Terminal".  You should now see a tab with "Fall 2018" and a prompt like: ```cabox@box-codeanywhere:~/workspace$```.  This terminal window will allow us to issue (text) commands to the Linux machine provided to us by codeanywhere.
 2.  Now work through the following commands, one at a time, at the prompt. After each command (first column), the observations (second column) specify things to look for or notice. Observing these things will help you cement your understanding of the directory hierarchy and command line environment. 
@@ -125,8 +124,8 @@ hierarchy in the left hand sidebar.
 ```ls exer2``` | What happened in the previous step?  What was the effect of using ```*.txt```?
 ```rmdir exer2``` | finish cleanup
 
-### Check Yourself
-At this point, you're starting to build up some knowledge about the basic Linux commands and navigate (via text only!) around the directory hierarchy.  As a quick recap, you should be able give a 1 sentence explanation about what each of the following commands do.  These commands are the absolute essentials in Linux.
+4. Check Yourself
+At this point, you're starting to build up some knowledge about the basic Linux commands and navigate (via text only!) around the directory hierarchy.  At this point, you should be able give a 1 sentence explanation about what each of the following commands do.  These commands are the absolute essentials in Linux.
 
 - ```cd```
 - ```touch```
@@ -136,3 +135,31 @@ At this point, you're starting to build up some knowledge about the basic Linux 
 - ```rm```
 - ```rmdir```
 - ```mv```
+
+5. git Exercise: At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
+- accept an assignment for our class
+- clone a repo for that assignment to codeanywhere
+- edit a file on codeanywhere
+- compile and run your program on codeanywhere
+- add your changes to your local repo and stage those changes
+- push your changes back to github and submit your work
+
+  1. Open a web browser, visit Blackboard, and find the Lab 0 announcement.  This announcement has a link in it.  Click on it.  You may have to grant the CMS230 organization permissions as this is the first time you've accepted the assignment.  You'll get a message that GitHub is setting up your repo.  Once that message is finished, your repo full of "starter code" for this lab has been created on GitHub.  But we've got to get that code over to codeanywhere!
+  2. In your GitHub window, find the big green button which says "Clone or download".  Click it and copy the link.
+  3. Switch tabs in your web browser to codeanywhere.  Navigate to your ```cms230``` directory.  In this directory type the command ```git clone link-to-repo-you-just-copied-in-the-previous-step```  Note: Typing Ctl-V to paste **will not work**.  You will need to right-click and select Paste. You may have to enter your GitHub user name and password, depending on how you set up your codeanywhere account.
+  4. You will see a confirmation message as the repo is successfully cloned.  Type ```ls``` at the prompt, and you will see a directory that is a combination of the assignment name (created by me) and your GitHub userid.  Move into that directory (```cd directory-name```) and type ```ls``` again.  You should see a file named ```Lab0.c``` which is the starter code I've provided for this "assignment".  
+  5. There is a small bug (feature?) in codeanywhere.  In order to be able to see your newly created directories and files in the graphical file browser (left hand sidebar), you'll need to refresh by right clicking on the Fall2018 connection and selecting Refresh.
+  6.  In the graphical file browser, navigate (by using your mouse and clicking, isn't that easy?!) to the Lab0.c file.  Click on it.  It will open in a tab.  You should now have two tabs open: "Fall2018" (the command line interface connection to the Linux computer) and "Lab0.c" (your C program ready for editing).
+  5.  Switch to the CLI tab and make sure you're in your Lab0 directory/repo.  At a prompt, compile the code by typing ```gcc -Wall Lab0.c```
+  6.  Remember that an absence of errors means success!  At the prompt, list the contents of the directory.  You should see a file named ```a.out```.  This is the compiled executable.  Execute it by typing ```./a.out```.  You should see the output ```Hello CMS230```.  
+  7.  Switch to your editor tab containing Lab0.c.  Modify the .c file to print out your name on a new line after the "Hello" greeting.  Save your changes. Switch back to the CLI tab, compile, and execute your program.  If you get any errors at the compilation stage, fix them!
+  8.  Yay!  You've completed your assignment.  Now you need to get your changes back to GitHub so that I can grade your work.  You will need to do 3 things to make this happen: add the (changed) file to your local repo, commit the changes to your local repo, push your local repo to your remote repo (on GitHub) so they are in sync.
+     1.  Type the command ```git add .```  This stages all the changed files in the current directory/repo.
+     2.  Type the command ```git commit -m "message here"```.  You should change the message between the quotes to indicate how your code has changed since your last commit.  For this assignment, an appropriate message might be: "Added code to print my name".
+     3.  ```git push origin master```.  This command pushes (copies/syncs) your local repo to GitHub.
+   9.  That's all you need to do to submit your work.  I will have access to your repo and can check/download your work to grade it if I need to.  GitHub automatically timestamps files, and I use this timestamp to verify deadlines.
+
+   ### A Few Notes About Good git Practices
+   - In general, you should have many commits for a homework.  A rule of thumb is to commit once you have a small "logical chunk" working.  In practice, this might mean committing whenever you finish a function or other "chunk" of code.  Remember that by committing and pushing your work, you're creating a backup of your code.  If codeanywhere were to disappear tomorrow (please, no), your code would still be on GitHub and you could be up and working on it again as soon as you found a computer with git and other software installed.
+   - In this class, we will not be working in teams.  In the real world working in teams requires the use of git branching.  We won't be covering branching in this course.
+   - While you can change files at GitHub.com via a web browser, I don't recommend this.  It is easy to create conflicts (code versions which cannot be combined) between your local repo and the repo on GitHub.  This takes some effort to sort out and can become ugly.  It's easier not to do it in the first place.
