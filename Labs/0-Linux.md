@@ -124,19 +124,7 @@ Command | Observations
 ```ls exer2``` | What happened in the previous step?  What was the effect of using ```*.txt```?
 ```rmdir exer2``` | finish cleanup
 
-4. Check Yourself
-At this point, you're starting to build up some knowledge about the basic Linux commands and navigate (via text only!) around the directory hierarchy.  At this point, you should be able give a 1 sentence explanation about what each of the following commands do.  These commands are the absolute essentials in Linux.
-
-- ```cd```
-- ```touch```
-- ```ls```
-- ```mkdir```
-- ```pwd```
-- ```rm```
-- ```rmdir```
-- ```mv```
-
-5. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
+4. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
   - accept an assignment for our class
   - clone a repo for that assignment to codeanywhere
   - edit a file on codeanywhere
@@ -144,7 +132,7 @@ At this point, you're starting to build up some knowledge about the basic Linux 
   - add your changes to your local repo and stage those changes
   - push your changes back to github and submit your work
 
-6. git Exercise
+5. git Exercise
 
    1. Open a web browser, visit Blackboard, and find the Lab 0 announcement.  This announcement has a link in it.  Click on it.  You may have to grant the CMS230 organization permissions as this is the first time you've accepted the assignment.  You'll get a message that GitHub is setting up your repo.  Once that message is finished, your repo full of "starter code" for this lab has been created on GitHub.  But we've got to get that code over to codeanywhere!
    2. In your GitHub window, find the big green button which says "Clone or download".  Click it and copy the link.
@@ -160,7 +148,8 @@ At this point, you're starting to build up some knowledge about the basic Linux 
       - Type the command ```git add .```  This stages all the changed files in the current directory/repo.
       - Type the command ```git commit -m "message here"```.  You should change the message between the quotes to indicate how your code has changed since your last commit.  For this assignment, an appropriate message might be: "Added code to print my name".
       -  ```git push origin master```.  This command pushes (copies/syncs) your local repo to GitHub.  Your work is **NOT** submitted until this step successfully finishes.
-    9.  That's all you need to do to submit your work.  I will have access to your repo and can check/download your work to grade it if I need to.  GitHub automatically timestamps files, and I use this timestamp to verify deadlines.
+   
+   That's all you need to do to submit your work.  I will have access to your repo and can check/download your work to grade it if I need to.  GitHub automatically timestamps files, and I use this timestamp to verify deadlines.
 
    ### A Few Notes About Good git Practices
    - In general, you should have many commits for a homework.  A rule of thumb is to commit once you have a small "logical chunk" working.  In practice, this might mean committing whenever you finish a function or other "chunk" of code.  Remember that by committing and pushing your work, you're creating a backup of your code.  If codeanywhere were to disappear tomorrow (please, no), your code would still be on GitHub and you could be up and working on it again as soon as you found a computer with git and other software installed.
