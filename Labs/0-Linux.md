@@ -38,8 +38,7 @@ You may also want to refer to [Notes on Linux and the Terminal Environment](http
 Command | Observations
 --------|--------------
 ``` LS ``` | case sensitivity is extremely important in CLIs.  If you get a "command not found" errors, check your capitalization and spacing
-```pwd``` | print working (current) directory.  Notice the output: ```/home/cabox/workspace```.  This is your current location in the hierarchy.  codeanywhere has automatically created a directory called ```workspace```.  Sub-directories that you create will show in the graphical
-hierarchy in the left hand sidebar.
+```pwd``` | print working (current) directory.  Notice the output: ```/home/cabox/workspace```.  This is your current location in the hierarchy.  codeanywhere has automatically created a directory called ```workspace```.  Sub-directories that you create will show in the graphical hierarchy in the left hand sidebar.
 ```ls``` | list the contents of the directory.  Notice the lack of output.  There are no files/directories in this directory.
 ```ls /``` | list the contents of the root directory.  Notice the output.
 -----------------|------------------------------------------------
@@ -70,6 +69,7 @@ hierarchy in the left hand sidebar.
 
 3. Now let's kick it up a notch.  We're going to add in lots of small details that really make a difference.  Pay close attention to each command (left column) and the observations (right column).  If you get confused, ask me or someone sitting near you.  It's important to not gloss over things you don't understand now as we'll be using these commands all semester.
 
+Command | Observations
 --------|--------------
 ``` cd ~/workspace/cms230 ``` | move into your ```cms230``` directory
 ``` mkdir temp ``` | make a temporary directory for this exercise
