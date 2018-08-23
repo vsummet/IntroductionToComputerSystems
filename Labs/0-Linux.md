@@ -147,7 +147,6 @@ At this point, you're starting to build up some knowledge about the basic Linux 
   - push your changes back to github and submit your work
 
 6. git Exercise
-
   1. Open a web browser, visit Blackboard, and find the Lab 0 announcement.  This announcement has a link in it.  Click on it.  You may have to grant the CMS230 organization permissions as this is the first time you've accepted the assignment.  You'll get a message that GitHub is setting up your repo.  Once that message is finished, your repo full of "starter code" for this lab has been created on GitHub.  But we've got to get that code over to codeanywhere!
   2. In your GitHub window, find the big green button which says "Clone or download".  Click it and copy the link.
   3. Switch tabs in your web browser to codeanywhere.  Navigate to your ```cms230``` directory.  In this directory type the command ```git clone link-to-repo-you-just-copied-in-the-previous-step```  Note: Typing Ctl-V to paste **will not work**.  You will need to right-click and select Paste. You may have to enter your GitHub user name and password, depending on how you set up your codeanywhere account.
