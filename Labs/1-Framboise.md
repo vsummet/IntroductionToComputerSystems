@@ -75,6 +75,22 @@ You will see message saying "the authenticity of host 'raspberrypi.local' can't 
 
 The default password is `raspberry`. Remember that the system does not display the password as you type it.
 
+### Let's install a new program
+Let's install a simple text editor, `nano`. `nano` is a basic text editor that runs in the terminal window.  It has key sequences to execute basic functions like saving a file, opening a file, etc.
+
+Linux systems have the notion of privilege levels and access control. The top level account on any system is the **superuser** or **root** account, which has the ability to make any change to anything. Regular users always run with privileges below that of root.
+
+`sudo` is `substitute user do`&mdash;it's a way to run individual commands with superuser-level privileges without actually logging in as the root account.
+
+![xkcd #149](https://imgs.xkcd.com/comics/sandwich.png)
+
+`apt-get` is a standard command for managing packages and installing programs on many Linux distros. It has to be run as root to make system changes, so it's prefixed by `sudo`.
+
+```
+prompt$ sudo apt-get install nano
+```
+If the system prompts you if you want to continue, you should enter `y` to install the software.
+
 ### Connect the Raspberry Pi to FoxNet
 
 To set up wi-fi, you're going to edit a configuration file called `wpa_supplicant.conf`.
@@ -88,13 +104,6 @@ Open the file in a text editor:
 ```
 prompt$ sudo nano wpa_supplicant.conf
 ```
-`nano` is a basic text editor that runs in the terminal window.
-
-Linux systems have the notion of privilege levels and access control. The top level account on any system is the **superuser** or **root** account, which has the ability to make any change to anything. Regular users always run with privileges below that of root.
-
-`sudo` is `substitute user do`&mdash;it's a way to run individual commands with superuser-level privileges without actually logging in as the root account.
-
-![xkcd #149](https://imgs.xkcd.com/comics/sandwich.png)
 
 The `wpa_supplicant.conf` file can only be edited by root, so you need to use `sudo` when you open it.
 
@@ -140,15 +149,12 @@ prompt$ ping 8.8.8.8
 
 Press `CTRL + c` to terminate the `ping` program.
 
-### Cowsay?
+### Cowsay fun?
 
 Let's install a new program.
 ```
 prompt$ sudo apt-get install cowsay
 ```
-`apt-get` is a standard command for managing packages and installing programs on many Linux distros. It has to be run as root to make
-system changes, so it's prefixed by `sudo`.
-
 Run the program:
 ```
 prompt$ cowsay "Hello, Raspberry Pi!"
@@ -198,14 +204,6 @@ prompt$ fortune | cowsay
 A **pipe** is a connection between two processes. The output of one end of the pipe becomes the input to the other end. In this example, the output of `fortune`, which would ordinarily go to the console, is redirected to the `cowsay` program instead, which then uses it as input and prints an oracular cow.
 
 Pipes are a common tool in the Unix world: they allow you to chain small, simple programs together to accomplish complex feats of text processing.
-
-### One More Thing...
-Telnet is a program for establishing a remote connection to another server.
-
-```
-prompt$ sudo apt-get install telnet
-prompt telnet towel.blinkenlights.nl
-```
 
 Close the terminal window to quit.
 
