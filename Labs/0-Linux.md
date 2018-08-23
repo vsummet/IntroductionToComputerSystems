@@ -136,9 +136,7 @@ At this point, you're starting to build up some knowledge about the basic Linux 
 - ```rmdir```
 - ```mv```
 
-5. Switching Gears
-
-  At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
+5. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
   - accept an assignment for our class
   - clone a repo for that assignment to codeanywhere
   - edit a file on codeanywhere
@@ -157,7 +155,8 @@ At this point, you're starting to build up some knowledge about the basic Linux 
   6.  Remember that an absence of errors means success!  At the prompt, list the contents of the directory.  You should see a file named ```a.out```.  This is the compiled executable.  Execute it by typing ```./a.out```.  You should see the output ```Hello CMS230```.  
   7.  Switch to your editor tab containing Lab0.c.  Modify the .c file to print out your name on a new line after the "Hello" greeting.  Save your changes. Switch back to the CLI tab, compile, and execute your program.  If you get any errors at the compilation stage, fix them!
   8.  Yay!  You've completed your assignment.  Now you need to get your changes back to GitHub so that I can grade your work.  You will need to do 3 things to make this happen: add the (changed) file to your local repo, commit the changes to your local repo, push your local repo to your remote repo (on GitHub) so they are in sync.
-     -  Type the command ```git add .```  This stages all the changed files in the current directory/repo.
+
+      - Type the command ```git add .```  This stages all the changed files in the current directory/repo.
      2.  Type the command ```git commit -m "message here"```.  You should change the message between the quotes to indicate how your code has changed since your last commit.  For this assignment, an appropriate message might be: "Added code to print my name".
      3.  ```git push origin master```.  This command pushes (copies/syncs) your local repo to GitHub.
    9.  That's all you need to do to submit your work.  I will have access to your repo and can check/download your work to grade it if I need to.  GitHub automatically timestamps files, and I use this timestamp to verify deadlines.
