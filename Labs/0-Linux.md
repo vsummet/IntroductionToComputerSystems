@@ -124,13 +124,14 @@ Command | Observations
 ```ls exer2``` | What happened in the previous step?  What was the effect of using ```*.txt```?
 ```rmdir exer2``` | finish cleanup
 
-4. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to 
-  - accept an assignment for our class
-  - clone a repo for that assignment to codeanywhere
-  - edit a file on codeanywhere
-  - compile and run your program on codeanywhere
-  - add your changes to your local repo and stage those changes
-  - push your changes back to github and submit your work
+4. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to: 
+
+   - accept an assignment
+   - clone a repo for that assignment to codeanywhere
+   - edit a file on codeanywhere
+   - compile and run your program on codeanywhere
+   - stage your changes and commit them to your local repo
+   - push your changes back to github and submit your work
 
 5. git Exercise
 
