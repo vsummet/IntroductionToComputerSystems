@@ -14,7 +14,7 @@ Along the way, you'll get some practice with several important Linux sysadmin co
 
 ### Pre-lab prep
 Let's get the boring lecture out of the way before lab, so you can spend this entire lab period 
-playing around with the basics of the Linux CLI and git.  To begin, watch these videos (in order or they won't make sense).  All of them are on YouTube and range from 7-10 minutes each and total about 1 hour.
+playing around with the basics of the Linux CLI and git.  To begin, watch these videos (in order or they won't make sense).  All of them are on YouTube and range from 7-10 minutes each and total about 1 hour and 15 minutes.
 
 1. [Command Line Interfaces](https://www.youtube.com/watch?v=3WddgzyhHk8)
 2. [Directory Hierarchies](https://www.youtube.com/watch?v=MdMCWKpWbjc)
@@ -24,15 +24,14 @@ playing around with the basics of the Linux CLI and git.  To begin, watch these 
 6. [Command Flags](https://www.youtube.com/watch?v=fU6BDYVE2og)
 7. [Creating and Deleting Directories](https://www.youtube.com/watch?v=AVzqquRi_-g)
 8. [Copying Files](https://www.youtube.com/watch?v=MYe58LbbfVU)
-9. [Moving/renaming Files and Directories]
-10. [git Architecture]
-11. [Basic git Commands]
+9. [Moving/renaming Files and Directories](https://www.youtube.com/watch?v=GKEGNdNIQrw)
+10. [git Basics](https://www.youtube.com/watch?v=uR6G2v_WsRA) (only the first 6:35)
 
 You may also want to refer to [Notes on Linux and the Terminal Environment](https://github.com/vsummet/IntroductionToComputerSystems/blob/master/Notes/01b-Linux_and_the_Shell.md) which you already read during the first week of class.
 
 ### Lab Activities
-0. Note that all the following steps assume you've already created your accounts and the connection as specified in the software setup discussed on the first day of class.  If you haven't done this, you need to follow the instructions on the software setup page before beginning.  See the link on the class calendar.
-1. Log into codeanywhere.  You should see the Fall2018 connection you created on the left hand sidebar.  Right click on the connection and choose "SSH Terminal".  You should now see a tab with "Fall 2018" and a prompt like: ```cabox@box-codeanywhere:~/workspace$```.  This terminal window will allow us to issue (text) commands to the Linux machine provided to us by codeanywhere.
+0. All the following steps assume you've already created your accounts and the connection as specified in the software setup discussed on the first day of class.  If you haven't done this, you need to follow the instructions on the software setup page before beginning.  See the link on the class calendar.
+1. Log into codeanywhere.  You should see the Fall2018 connection you created on the left hand sidebar.  Right click on the connection and choose "SSH Terminal".  You should now see a tab with "Fall 2018" and a prompt like: ```cabox@box-codeanywhere:~/workspace$```.  This tells us that our user id is ```cabox```.  This terminal window will allow us to issue (text) commands to the Linux machine provided to us by codeanywhere.
 2.  Now work through the following commands, one at a time, at the prompt. After each command (first column), the observations (second column) specify things to look for or notice. Observing these things will help you cement your understanding of the directory hierarchy and command line environment. 
 
 Command | Observations
@@ -61,8 +60,8 @@ Command | Observations
 -----------------|------------------------------------------------
 ```cd``` | Where are you in the directory heirarchy? Check if you need to.
 ```cd ..``` | Now where are you? Check if you need to. What did the ```..``` do?
-```cd ~/cms230``` | What happened?  Why?
 ```cd ~/workspace/cms230``` | Where are you? What directory does the ```~``` represent?
+```cd ~/cms230``` | What happened?  Why?
 ```cd ../..``` | Where are you? What happened when you used ```..``` twice?
 
 
@@ -73,7 +72,7 @@ Command | Observations
 --------|--------------
 ``` cd ~/workspace/cms230 ``` | move into your ```cms230``` directory
 ``` mkdir temp ``` | make a temporary directory for this exercise
-``` touch temp/file1.txt ``` | make an empty file in the temporary directory
+``` touch temp/file1.txt ``` | make an empty file in the temp directory
 ``` ls ``` | list the contents of your ```cms230``` directory
 ``` ls -l ``` | list, long format.  Notice the output and how it differs from the previous command.  What do you think it means if a line of output starts with a 'd'?
 ``` ls -L ``` | did you get the same result?
@@ -84,7 +83,7 @@ Command | Observations
 ```touch exercise2/file1.txt``` |
 ```touch exercise2/file2.txt``` | make some files in the ```exercise2``` directory
 ```ls -l exercise2``` | what happens when you list a directory?
-------------------------------------------------------|------------------------------------------------
+--------------------------------------------------------------------------------|------------------------------------------------
 ```mv exercise2/file1.txt exercise2/file3.txt``` |
 ```ls exercise2``` | Where did ```file1.txt``` go in the ```exercise2``` directory?
 ```mv exercise2/file2.txt``` | What happened? What does this error mean?
@@ -126,8 +125,8 @@ Command | Observations
 
 4. Switching Gears - At this point, you'll do a very short exercise using git.  This exercise is designed to be like homework assignments in miniature.  This is the procedure you'll follow for all (most?) homework assignments this semester.  This exercise will show you how to: 
 
-   - accept an assignment
-   - clone a repo for that assignment to codeanywhere
+   - accept an assignment which will create a repo on GitHub.com with some starter code
+   - clone that repo to codeanywhere
    - edit a file on codeanywhere
    - compile and run your program on codeanywhere
    - stage your changes and commit them to your local repo
@@ -135,13 +134,13 @@ Command | Observations
 
 5. git Exercise
 
-   1. Open a web browser, visit Blackboard, and find the Lab 0 announcement.  This announcement has a link in it.  Click on it.  You may have to grant the CMS230 organization permissions as this is the first time you've accepted the assignment.  You'll get a message that GitHub is setting up your repo.  Once that message is finished, your repo full of "starter code" for this lab has been created on GitHub.  But we've got to get that code over to codeanywhere!
+   1. Open a web browser, visit Blackboard, and find the Lab0 announcement.  This announcement has a link in it.  Click on it.  You may have to grant the CMS230 organization permissions as this is the first time you've accepted the assignment.  You'll get a message that GitHub is setting up your repo.  Once that message is finished, your repo full of "starter code" for this lab has been created on GitHub.  But we've got to get that code over to codeanywhere!
    2. In your GitHub window, find the big green button which says "Clone or download".  Click it and copy the link.
    3. Switch tabs in your web browser to codeanywhere.  At a prompt, navigate to your ```cms230``` directory.  In this directory type the command ```git clone link-to-repo-you-just-copied-in-the-previous-step```  Note: Typing Ctl-V to paste **will not work**.  You will need to right-click and select Paste. You may have to enter your GitHub user name and password, depending on how you set up your codeanywhere account.
    4. You will see a confirmation message as the repo is successfully cloned.  Type ```ls``` at the prompt, and you will see a directory that is a combination of the assignment name and your GitHub userid.  Move into that directory (```cd directory-name```) and type ```ls``` again.  You should see a file named ```Lab0.c``` which is the starter code I've provided for this "assignment".  
    5. There is a small bug (feature?) in codeanywhere.  In order to be able to see your newly created directories and files in the graphical file browser (left hand sidebar), you'll need to refresh by right clicking on the Fall2018 connection and selecting Refresh.
    6.  In the graphical file browser, navigate (by using your mouse and clicking, isn't that easy?!) to the Lab0.c file.  Click on it.  It will open in a tab.  You should now have two tabs open: "Fall2018" (the command line interface connection to the Linux computer) and "Lab0.c" (your C program ready for editing).
-   5.  Switch to the CLI tab and make sure you're in your Lab0 directory.  At a prompt, compile the code by typing ```gcc -Wall Lab0.c```
+   5.  Switch to the CLI tab and make sure you're in the directory for Lab 0.  At a prompt, compile the code by typing ```gcc -Wall Lab0.c```
    6.  Remember that an absence of errors means success!  At the prompt, list the contents of the directory.  You should see a file named ```a.out```.  This is the compiled executable.  Execute it by typing ```./a.out```.  You should see the output ```Hello CMS230```.  
    7.  Switch to your editor tab containing Lab0.c.  Modify the .c file to print out your name on a new line after the "Hello" greeting.  Save your changes. Switch back to the CLI tab, compile, and execute your program.  If you get any errors at the compilation stage, fix them!
    8.  Yay!  You've completed your assignment.  Now you need to get your changes back to GitHub so that I can grade your work.  You will need to do 3 things to make this happen: add the (changed) file to your local repo, commit the changes to your local repo, push your local repo to your remote repo (on GitHub) so they are in sync.
