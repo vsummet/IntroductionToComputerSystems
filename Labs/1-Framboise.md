@@ -4,7 +4,10 @@
 ### Pre-lab
 Windows users only: 
 * Download and install the [Etcher image burning software](https://etcher.io/).
-* Download the latest version of the Raspian OS from [the Raspberry Pi foundation](https://www.raspberrypi.org/downloads) as a ZIP file.  Don't get the "Raspberry Pi Desktop" or NOOBS.  You want the "Raspbian Stretch Lite" version.  Not the "Raspbian Stretch with Desktop".  Don't extract the files from the ZIP format/folder after you've downloaded it.
+* Download the latest version of the Raspian OS from [the Raspberry Pi foundation](https://www.raspberrypi.org/downloads) as a ZIP file.  Don't get the "Raspberry Pi Desktop" or NOOBS.  You want the "Raspbian Stretch Lite" version.  Not the "Raspbian Stretch with Desktop".  Don't extract the files from the ZIP format/folder after you've downloaded it.  (*Note: this took 30-45 minutes the day I did it.  I'm not sure whether to blame the campus network or the RPi.org servers, but allow ample time for this download to complete.*)
+
+Mac users:
+* Find a friendly Windows user to complete the first part of the lab (burning the OS to the SD card) with.
 
 ### Goals
 
@@ -17,7 +20,7 @@ This lab will let you practice logging into and working with the Raspberry Pi. A
   - installing packages with `apt-get`
   - the `man` command
   - connecting programs with pipes
-  - talking cows
+  - talking, oracular cows
   
 ### Getting an OS onto the SD Card
 
