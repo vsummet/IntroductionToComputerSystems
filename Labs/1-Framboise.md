@@ -1,5 +1,11 @@
 # Lab 1: Framboise
 
+
+### Pre-lab
+Windows users only: 
+* Download and install the [Etcher image burning software](https://etcher.io/).
+* Download the latest version of the Raspian OS from [the Raspberry Pi foundation](https://www.raspberrypi.org/downloads) as a ZIP file.  Don't get the "Raspberry Pi Desktop" or NOOBS.  You want the "Raspbian Stretch Lite" version.  Not the "Raspbian Stretch with Desktop".  Don't extract the files from the ZIP format/folder after you've downloaded it.
+
 ### Goals
 
 This lab will let you practice logging into and working with the Raspberry Pi. Along the way, you'll get some practice with several important Linux sysadmin concepts, including
@@ -24,18 +30,16 @@ step is to burn a copy of the OS onto your SD card.
   - You are going to overwrite a destination drive with a new OS. **Make sure you overwrite the SD card and not your computer's regular hard drive**.
   - Windows may pop up messages about "reformatting" a drive. **Do not reformat any drives***. Click cancel on any messages about reformatting that you see.
 
-If you have not done so already, download the [Etcher image burning software](https://etcher.io/). Windows users should have already downloaded the Raspbian OS image as a ZIP file from the Raspberry Pi Foundation's website.
-
 Open Etcher and insert your SD card into the laptop. The Etcher software should automatically recognize that you have inserted a removable storage device and automatically select it as the destination drive for the burn. Select your Raspbian ZIP file as the image, then click "Flash" to perform the burn.
 
 The burn process taks 2-3 minutes, followed by another 2-3 minutes for validation. Don't do anything to disrupt the process until the entire operation is complete.
 
-Once your burn is completely finished, remove your SD card from the laptop, then reinsert it. Look in Windows Explorer and you should see a removable drive named `boot`.
+Once your burn is completely finished, remove your SD card from the laptop, then reinsert it. Look in Windows Explorer and you should see a removable drive named `boot`.  You may get some pop-up errors or requests to refomat.  Click "Cancel" and ignore these.
 
 To log in to the Raspberry Pi, you need to enable the SSH ("Secure Shell") encrypted log-in protocol. This is disabled by default on current versions of the Raspbian OS.
   - Open Notepad
   - Go to File --> Save As...
-  - Save a blank file with the name `ssh` (just `ssh` with no extension, **not** `ssh.txt`) to the main directory on the `boot` drive. When I have done this before, I selected "Save as type: All files" rather than "Text file" on the Save As... dialog box; I'm not sure if this matters or not.
+  - Save a blank file with the name `ssh` (just `ssh` with no extension, **not** `ssh.txt`) to the main directory on the `boot` drive. Select "Save as type: All files" rather than "Text file" on the Save As... dialog box.
   - When the Raspbian OS boots, it uses the presence of the `ssh` file as a signal to enable the SSH protocol.
   - Right click on the `boot` drive and choose "Eject" from the menu before you remove it from the laptop.
 
@@ -53,13 +57,13 @@ First, download PuTTY, a program for making remote connections with a terminal i
 
 Note that `putty.exe` is simply an exectuable file, not an installer.
 
-Next, download and install [Bonjour Print Services](https://support.apple.com/kb/dl999?locale=en_US) from Apple. This program will allow your computer to recognize the Raspberry Pi's name over your direct ethernet connection. If you have iTunes installed you may already have the necessary protocol. **Make sure to run the installer**.
+Next, download and install [Bonjour Print Services](https://support.apple.com/kb/dl999?locale=en_US) from Apple (this will easily give us the Zeroconf network service). This program will allow your computer to recognize the Raspberry Pi's name over your direct ethernet connection. If you have iTunes installed you may already have the necessary protocol. **Make sure to run the installer**.
 
 Run PuTTY. In the "Host name" field, enter `pi@raspberrypi.local`, then press the "Open" button. You should see a terminal window pop up.
 
 You will see message saying "the authenticity of host 'raspberrypi.local' can't be established". This is because it's your first time establishing an encrypted connection to that host. You're not being hacked right now, so select "yes" to continue connecting.
 
-The default password is `raspberry`. Remember that the system does not display the password as you type it.
+The default password is `raspberry`. Note that the system **does not** display the password as you type it.  Nor does the cursor move.  Rest assured that the password is being typed and press enter.
 
 ### Logging in for Mac Users
 
@@ -73,23 +77,7 @@ prompt$ ssh pi@raspberrypi.local
 
 You will see message saying "the authenticity of host 'raspberrypi.local' can't be established". This is because it's your first time establishing an encrypted connection to that host. You're not being hacked right now, so enter "yes" to continue connecting.
 
-The default password is `raspberry`. Remember that the system does not display the password as you type it.
-
-### Let's install a new program
-Let's install a simple text editor, `nano`. `nano` is a basic text editor that runs in the terminal window.  It has key sequences to execute basic functions like saving a file, opening a file, etc.
-
-Linux systems have the notion of privilege levels and access control. The top level account on any system is the **superuser** or **root** account, which has the ability to make any change to anything. Regular users always run with privileges below that of root.
-
-`sudo` is `substitute user do`&mdash;it's a way to run individual commands with superuser-level privileges without actually logging in as the root account.
-
-![xkcd #149](https://imgs.xkcd.com/comics/sandwich.png)
-
-`apt-get` is a standard command for managing packages and installing programs on many Linux distros. It has to be run as root to make system changes, so it's prefixed by `sudo`.
-
-```
-prompt$ sudo apt-get install nano
-```
-If the system prompts you if you want to continue, you should enter `y` to install the software.
+The default password is `raspberry`. Note that the system does not display the password as you type it. Nor does the cursor move.  Rest assured that the password is being typed and press enter.
 
 ### Connect the Raspberry Pi to FoxNet
 
@@ -104,6 +92,12 @@ Open the file in a text editor:
 ```
 prompt$ sudo nano wpa_supplicant.conf
 ```
+
+Linux systems have the notion of privilege levels and access control. The top level account on any system is the **superuser** or **root** account, which has the ability to make any change to anything. Regular users always run with privileges below that of root.
+
+`sudo` is `substitute user do`&mdash;it's a way to run individual commands with superuser-level privileges without actually logging in as the root account.
+
+![xkcd #149](https://imgs.xkcd.com/comics/sandwich.png)
 
 The `wpa_supplicant.conf` file can only be edited by root, so you need to use `sudo` when you open it.
 
@@ -139,7 +133,7 @@ After you have saved the file, reboot your Pi to make the changes take effect.
 ```
 prompt$ sudo reboot
 ```
-It will take about a minute for your Pi to reboot. After that, repeat the log-in process. The target server is `pi@raspberrypi.local` and the password is `raspberry`.
+It will take about a minute for your Pi to reboot. After that, repeat the log-in process with PuTTY or Terminal. The target server is `pi@raspberrypi.local` and the password is `raspberry`.
 
 Test by pinging a remote server. `ping` is a command that sends small message packets to a server and measures the response times.
 ```
@@ -155,6 +149,11 @@ Let's install a new program.
 ```
 prompt$ sudo apt-get install cowsay
 ```
+
+`apt-get` is a standard command for managing packages and installing programs on many Linux distros. It has to be run as root to make system changes, so it's prefixed by `sudo`.
+
+If the system prompts you if you want to continue, you should enter `y` to install the software.
+
 Run the program:
 ```
 prompt$ cowsay "Hello, Raspberry Pi!"
@@ -205,5 +204,7 @@ A **pipe** is a connection between two processes. The output of one end of the p
 
 Pipes are a common tool in the Unix world: they allow you to chain small, simple programs together to accomplish complex feats of text processing.
 
-Close the terminal window to quit.
+Use the up arrow at the prompt to repeat the previous command several times.  Remember that this is a useful short-cut when you need to repeat the previous command (or several commands).
+
+Type `exit` and close the terminal window to quit.
 
