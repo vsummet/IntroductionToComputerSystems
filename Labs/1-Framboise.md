@@ -48,7 +48,7 @@ To log in to the Raspberry Pi, you need to enable the SSH ("Secure Shell") encry
 
 ### Start Up the Raspberry Pi
 
-Insert the micro-SD card into the slot on the bottom of the Pi. Connect the ethernet cable between the Pi and your laptop, then attach the power supply to its connector on the Pi.
+Insert the micro-SD card into the slot on the bottom of the Pi. Connect the ethernet cable between the Pi and your laptop, then attach the power supply to its connector on the Pi. **Don't attach the power supply until the ethernet cable and the SD card are ready to go.**
 
 You should see a solid red light and a blinking green light. Wait about a minute until the green light stops blinking.
 
@@ -114,6 +114,7 @@ You can copy the `network` block and paste it into the terminal window. Mac user
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
+country=US
 
 network={
 	ssid="FoxNet-v2"
@@ -122,13 +123,13 @@ network={
 	pairwise=CCMP
 	auth_alg=OPEN
 	eap=PEAP
-	identity="dmyers"
-	password="ItsASecretToEveryone"
+	identity="yourUserNameHere"
+	password="yourSuperSecretPasswordHere"
 	phase1="peapver=0"
 	phase2="MSCHAPV2"
 }
 ```
-Press `CTRL + o` to save ("write out") the file.
+Press `CTRL + o` to save ("write out") the file, and confirm the name of the file by pressing `Enter`.
 
 Press `CTRL + x` to exit the nano editor.
 
@@ -144,7 +145,7 @@ prompt$ ping 8.8.8.8
 ```    
 8.8.8.8 is the IP address of the public Google DNS server. If your Pi is connected to FoxNet, you should see lines reporting the response times of each `ping` packet. If you get a message saying that the network is unreachable, or another error, double-check the contents of the `wpa_supplicant.conf` file.
 
-Press `CTRL + c` to terminate the `ping` program.
+The output of `ping` will continue until you press `CTRL + c` to terminate the `ping` program.
 
 ### Cowsay fun?
 
