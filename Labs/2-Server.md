@@ -87,7 +87,7 @@ wlan0     Link encap:Ethernet  HWaddr b8:27:eb:7d:98:e8
           RX packets:401 errors:0 dropped:354 overruns:0 frame:0
           TX packets:88 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:86595 (84.5 KiB)  TX bytes:16455 (16.0 KiB)```
+          RX bytes:86595 (84.5 KiB)  TX bytes:16455 (16.0 KiB)
 ```
 
 Look at the `inet addr` field. This is your Pi's IP address, a unique identifier that browsers and other systems can use to reach your machine over the Internet. The IP address is a 32-bit value, but is conventionally written in "dot notation," showing the integer values of each of its four bytes.
