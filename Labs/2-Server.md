@@ -46,7 +46,9 @@ Install nginx using `apt-get`.
 prompt$ sudo apt-get install nginx
 ```
 
-**Question**: what does the `sudo` command do?
+Press `y` and then `Enter` if you are prompted to confirm the installation.
+
+**Question**: what does the `sudo` command do?  Re-read the previous lab if you need an explanation.
 
 nginx is automatically configured to start as soon as its host boots. This makes sense for a production web server, which should start up as quickly as possible after any downtime, but it isn't necessary for our Pi. As a general rule, never keep a server open on your machine when you aren't actively using it for something. To disable autorun:
 
@@ -106,7 +108,7 @@ Make a change to the file by adding
 <h1>OHAI DERE</h1>
 ```
 
-to the existing `<body>` section. Save with CTRL + o and exit with CTRL + x. Reload the page in the web browser and you should see your changes in the page's text.
+to the existing `<body>` section. Save with CTRL + o (and Enter to confirm) and exit with CTRL + x. Reload the page in the web browser and you should see your changes in the page's text.
 
 ## Configure and Serve a New File
 
@@ -153,7 +155,7 @@ prompt$ nano index.html
 </html>
 ```
 
-Save the file using CTRL + o and exit the editor using CTRL + x.
+Save the file using CTRL + o (Enter to confirm) and exit the editor using CTRL + x.
 
 Next, edit the nginx configuration to serve your new page. Get the full path of the `web` directory.
 
@@ -383,7 +385,7 @@ prompt$ openssl passwd -1 "raspberry" > shadow_test
 
 You can run `john shadow_test` again and let it run for a minute or so, but it won't crack the password. `raspberry` is too unusual for the default cracking approach. Try pressing the spacebar as `john` runs to get a status update on what it's currently trying.
 
-Can we do better? Yes, we can, with a **dictionary** attack. Download a large list of words:
+Can we do better? Yes, we can, with a **dictionary** attack. Press CTRL-C to end the currently running program.  Then download a large list of words:
 
 ```
 prompt$ sudo apt-get install wamerican-large
@@ -423,5 +425,11 @@ One popular approach is to randomly string together words from a list.
 
 ## Last Step
 
-Log out of your Pi by typing `exit` at the prompt.
+Shutdown your Pi by typing
+```
+sudo shutdown -h now
+```
+
+This causes your Pi to immediately begin shutting down (killing your Putty or SSH session).  Once the green light stops blinking, unplug the power cord, and put your Pi away.
+
 
