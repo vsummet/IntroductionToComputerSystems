@@ -14,7 +14,7 @@ Next, grab all the updated software for our version of Linux:
 ```
 prompt$ sudo apt-get upgrade
 ```
-If prompted, type `y' and then '[Enter]` to indicate you want to continue.
+If prompted, type `y' and then '[Enter]` to indicate you want to continue.  Upgrading the software will take awhile, but you should be able to see a text-based indicator of download and installation progress.
 
 Finally, make sure all the old software has been removed:
 ```
@@ -61,6 +61,7 @@ This will create a directory containing all the code in your repo.  You can repe
 At this point, you can use the standard commands you are used to, including:
 ```
 prompt$ gcc -Wall -Werror -o sorting sorting.c
+prompt$ make
 prompt$ python test.py
 prompt$ git add .
 prompt$ git commit -m "my final version"
@@ -68,6 +69,8 @@ prompt$ git push origin master
 ```
 
 ## Tips
+We're doing a lot of work installing software which requires elevated privileges.  If you get an error about `permission denied`, check to make sure you included the necessary `sudo` command to elevate your user privileges.
+
 I suggest opening and connecting two Putty/Terminal windows at the same time.  Yes, you can have multiple connections open at the same time.  Just remember that they're both controling the same piece of hardware.  In one window, open `nano` and edit your file and save it.  But don't press `CTRL x` to exit the text editor.  In the other window, keep your standard command line interface from which to compile, test, push, etc.  Develop in one window, run in the other.  You can actually get a pretty efficient workflow going by switching between windows in this manner.
 
 When you're finished, exit `nano` in one window and then type `exit` to close that connection.  In the other window use
@@ -75,3 +78,4 @@ When you're finished, exit `nano` in one window and then type `exit` to close th
 prompt$ sudo shutdown -h now
 ```
 to shutdown your Pi as usual.
+
