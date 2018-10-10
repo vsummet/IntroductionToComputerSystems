@@ -61,13 +61,9 @@ Start nginx:
 ```
 prompt$ sudo nginx
 ```
-If this command givs you a "could not bind" error, that's okay. It just means that nginx started running when you installed it.
+If this command gives you a "could not bind" error, that's okay. It just means that nginx started running when you installed it.
 
-Your server is now up and sending a default page in response to HTTP requests. Later, when you're ready to stop it, use
-
-```
-prompt$ sudo nginx -s quit
-```
+Your server is now up and sending a default page in response to HTTP requests.
 
 ## Test
 
@@ -92,7 +88,7 @@ wlan0     Link encap:Ethernet  HWaddr b8:27:eb:7d:98:e8
 
 Look at the `inet addr` field. This is your Pi's IP address, a unique identifier that browsers and other systems can use to reach your machine over the Internet. The IP address is a 32-bit value, but is conventionally written in "dot notation," showing the integer values of each of its four bytes.
 
-Open up a web browser and type `http://172.23.17.102` in the browser's address bar&mdash;replace my example IP address with your Pi's own IP address printed by `ifconfig`. The default nginx web page will load in your browser.
+Open up a web browser (Chrome, Firefox, Safari, etc) on your computer and type `http://172.23.17.102` in the browser's address bar&mdash;replace my example IP address with your Pi's own IP address printed by `ifconfig`. The default nginx web page will load in your browser.
 
 The default page is located at `/var/www/html/index.nginx-debian.html`. Edit it using `nano`:
 
@@ -206,7 +202,7 @@ Save the file, then reload nginx to make it use the new configuration.
 prompt$ sudo nginx -s reload
 ```
 
-Refresh the page in the browser one more time to see your new page.
+Refresh the page in the web browser one more time to see your new page.
 
 ## Interior Decoration
 
@@ -216,7 +212,7 @@ cURL is a useful tool that let's you interact with a remote server from the comm
 prompt$ curl -O https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg
 ```
 
-The `-O` flag saves the file locally.
+The `-O` flag saves the file locally.  Note that this is a capital o, not a zero.
 
 Open your `index.html` file and add an image tag to its body.
 
@@ -361,7 +357,7 @@ prompt$ cd ~
 prompt$ openssl passwd -1 "password" > shadow_test
 ```
 
-`openssl` is a program for performing, among other things, crypto-related operations. The `-1` flag indicates the MD5 hash function. `password` is the real password that is being hashed.
+`openssl` is a program for performing, among other things, crypto-related operations. The `-1` (one, not L) flag indicates the MD5 hash function. `password` is the real password that is being hashed.
 
 The operation `> shadow_test` redirects the output of `openssl`, which would normally be printed to the terminal, to a file named `shadow_test`. You can check the contents of the file:
 
@@ -383,7 +379,9 @@ Let's try something a littler harder:
 prompt$ openssl passwd -1 "raspberry" > shadow_test
 ```
 
-You can run `john shadow_test` again and let it run for a minute or so, but it won't crack the password. `raspberry` is too unusual for the default cracking approach. Try pressing the spacebar as `john` runs to get a status update on what it's currently trying.
+You can run `john shadow_test` again and let it run for a minute or so, but it won't crack the password. `raspberry` is too unusual for the default cracking approach. 
+
+Try pressing the spacebar as `john` runs to get a status update on what it's currently trying.
 
 Can we do better? Yes, we can, with a **dictionary** attack. Press CTRL-C to end the currently running program.  Then download a large list of words:
 
@@ -397,7 +395,7 @@ Now run the program again, using the large wordlist as a list of candidate passw
 prompt$ john --wordlist=/usr/share/dict/american-english-large shadow_test
 ```
 
-It will take a minute, but `john` will eventually work its way through the list to find `raspberry` and crack the password. Press the spacebar for updates as it cracks.
+It will take a minute, but `john` will eventually work its way through the list to find `raspberry` and crack the password. Press the spacebar for updates as it cracks; you will see it move alphabetically through the dictionary.
 
 How about one more?
 
@@ -405,7 +403,7 @@ How about one more?
 prompt$ openssl passwd -1 "raspberry1" > shadow_test
 ```
 
-John is still one step ahead of you, because it can apply **mangling rules** to the candidate wordlist to generate new passwords that match common patterns.
+John is still one step ahead of you, because it can apply **mangling rules** to the candidate wordlist to generate new passwords that match common patterns.  Mangling rules cover common human tricks such as adding a number to the end of a common word or replacing o's with the number 0 in a common word.
 
 ```
 prompt$ john --wordlist=/usr/share/dict/american-english-large --rules shadow_test
@@ -419,6 +417,8 @@ How to create good passwords? Basically, a combination of length and unusualness
     
 - Failing that, a combination of length, a large character set with capitals and special characters, and a generation process that avoids common mangling rules.
 
+**Think about:** What rules different companies (or your school) have about password requirements?
+
 One popular approach is to randomly string together words from a list.
 
 ![xkcd 936](https://imgs.xkcd.com/comics/password_strength.png)
@@ -427,9 +427,9 @@ One popular approach is to randomly string together words from a list.
 
 Shutdown your Pi by typing
 ```
-sudo shutdown -h now
+prompt$ sudo shutdown -h now
 ```
 
-This causes your Pi to immediately begin shutting down (killing your Putty or SSH session).  Once the green light stops blinking, unplug the power cord, and put your Pi away.
+This causes your Pi to immediately begin shutting down (closing your Putty or SSH connection).  Once the green light stops blinking, unplug the power cord, and put your Pi away.
 
 
