@@ -66,3 +66,12 @@ prompt$ git add .
 prompt$ git commit -m "my final version"
 prompt$ git push origin master
 ```
+
+## Tips
+I suggest opening and connecting two Putty/Terminal windows at the same time.  Yes, you can have multiple connections open at the same time.  Just remember that they're both controling the same piece of hardware.  In one window, open `nano` and edit your file and save it.  But don't press `CTRL x` to exit the text editor.  In the other window, keep your standard command line interface from which to compile, test, push, etc.  Develop in one window, run in the other.  You can actually get a pretty efficient workflow going by switching between windows in this manner.
+
+When you're finished, exit `nano` in one window and then type `exit` to close that connection.  In the other window use
+```
+prompt$ sudo shutdown -h now
+```
+to shutdown your Pi as usual.
