@@ -326,3 +326,29 @@ for (i = 0; i < b; i++) {
 ```
 
 This is almost the same as the `while` loop version. Think about how to implement the condition check for the loop in terms of `i` and `b` and how and where to implement `i++`.
+
+**Challenge Problems**
+1. Translate the following C/Java code into assembly:
+```
+int x = value of your choice;
+int y = 0;
+
+if(x > 5 && x < 20) {
+  y = 2 + x;
+} else {
+  y = 5 + x;
+}
+```
+Strategy: rewrite the compound if statement as a pair of nested if statements.  Then label the sections of code and translate these to blocks of code in assembly.  Pay special attention to branching around/over blocks of code which should not logically be executed.
+
+2. Translate the following C/Java code into assembly:
+```
+int x = 6;
+while(x < 10) {
+  if (x == 8) {
+    break;
+  }
+  x++;
+}
+```
+Strategy: remember that a ```break``` statement ends the loop.  Think about what should execute next if the if statement is true.
