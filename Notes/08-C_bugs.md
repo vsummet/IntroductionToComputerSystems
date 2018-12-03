@@ -1,4 +1,4 @@
-# Cool Bugs Relevant to this Course
+# A Study of Software Bugs Relevant to this Course
 
 ## Heartbleed bug (April 2014)
 
@@ -48,7 +48,7 @@ pl = p;
 
 ## Apple's goto fail (2014)
 *Aspect of the course:*
-This is a really simple C programming bug, but it demonstrates the need for a solid testing infrastructure and following coding conventions.
+This is a really simple C programming bug, but it demonstrates the need for a solid testing infrastructure, following coding conventions, and compiler warning/error flags.
 
 *Why was it a big deal?:* Like the previous bug, this one occured in some security software crucial to the Internet's functionality.  It occured in Apple's SecureTransport code (their version of SSL/TLS, similar to OpenSSL). Apple uses this library for most of it security checking, and the code is native to the iOS operating system.  This meant that the bug affected virtually all iOS devices including iPads, iPhones, iPod Touches, and some Mac computers running OSX.
 
@@ -79,7 +79,7 @@ In this case, `goto fail` works like an unconditional branch instruction in the 
 
 Through unit testing, this bug would have been easy to catch.  It's important to write both negative test cases (does the code correctly react to a failing scenario) as well as positive ones (does the code to the right thing).
 
-There was also a compiler flag which would have caught the unreachable code occuring after the 2nd/extra ```goto``` statement.  Specifically the `-Wunreachable-code` should work for both `gcc` and `Clang`, two popular and widely used compilers.  Interestingly, the `gcc` developers quietly removed this option years ago due to instability.  However, the option continues to be accepted with no outward warnings that the checking IS NOT occurring!
+There was also a compiler flag which would have caught the unreachable code occuring after the 2nd/extra ```goto``` statement.  Specifically the `-Wunreachable-code` should work `Clang`, a popular and widely used compiler.  Interestingly, `gcc` seemingly has an identical flag, but developers quietly removed the functionality of this option years ago due to instability.  However, the option continues to be accepted with no outward warnings that the checking IS NOT occurring!  However, `gcc` does offer the `-Wmisleading-indentation` option which would catch the error of improper/misleading indentation as above.
 
 We've also talked about coding conventions and how important they can be to a common understanding among programmers.  It's worth noting that many professional coding standards require braces around all if statements, including one liners like those above.  For example, [the Mozilla guidlines](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style#Naming_and_Formatting_code) (makers of Firefox among other software) specifically state:
 > Always brace controlled statements, even a single-line consequent of if else else. This is redundant, typically, but it avoids dangling else bugs, so it's safer at scale than fine-tuning.
