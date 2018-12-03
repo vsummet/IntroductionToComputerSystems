@@ -90,4 +90,19 @@ We've also talked about coding conventions and how important they can be to a co
 * https://dwheeler.com/essays/apple-goto-fail.html
 * https://www.theguardian.com/technology/2014/feb/25/apples-ssl-iphone-vulnerability-how-did-it-happen-and-what-next
 
-## Intel's Floating Point Bug (2016)
+## Intel's FDIV Bug (1994)
+*Aspect of the course:* Instruction Set Architectures.   In fact, `FDIV` is the x86 assembly language instruction for floating point division.  While this bug was a hardware bug, not a software one, it demonstrates the importance of understanding what results your software should be giving you before running it so that you can "sanity check" the results.  Moreover, it demonstrates the important of adhering to international standards in storage and usage of data such as the IEEE-754 standard we discussed for storing single and double precision floating point numbers. 
+
+*Why was it a big deal?:*  
+The Pentium line of processors was (at the time) a new release for Intel.  The first, the Pentium-75, was billed as the fastest, most technologically advance processor and was marketed as a substantial upgrade from the previous line of Intel's chips, the 486s.  However, a math professor at the small school of Lynchburg College found that floating point division results did not match what he was expecting.  In short, he ran numerous calculations and found that these calculations did not match the theoretically expected values he derived via formulas.  He set out to understand why, examining his code and proofs for logic errors, writing the program in multiple languages, and running his program(s) and many different computers from different manufacturing facilities.  
+
+Error-free calculations are extremely important, and this bug truncated calculations results.  Given that the output of a division is often fed as input to another division (in a loop or via function compounding), the error can magnify quickly, although Intel downplayed its significance as occuring in only 1 out of 9 billion independent calculations.  
+
+*How it worked:*
+An example: `4195835/3145727` would return 1.333**739068902037589** instead of the correct value of 1.333**820449136241002**, so the error could be seen after only 5 significant digits.  To more quickly compute division of floating point numbers, chip designers had implemented an Sweeney, Robertson, Tocher (SRT) algorithm which required the use of a lookup table to achieve its performance metric of generating 2 quotient bits per clock cycle.  This lookup table contained pre-calculated values for 1066 divisions which would be intermediate steps for the algorithm.  Somehow, however, 5 entries were omitted from the table.
+
+*Readings:*
+http://www.emery.com/nicely.htm
+https://www.mathworks.com/matlabcentral/fileexchange/1666-pentium-division-bug-documents
+https://www.techradar.com/news/computing-components/processors/pentium-fdiv-the-processor-bug-that-shook-the-world-1270773
+
