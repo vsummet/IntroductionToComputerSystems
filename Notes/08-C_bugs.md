@@ -1,4 +1,4 @@
-#Cool Bugs Relevant to this Course
+# Cool Bugs Relevant to this Course
 
 ## Heartbleed bug (April 2014)
 
@@ -9,7 +9,7 @@ This bug was in a code base known as OpenSSL.  SSL stands for Secure Sockets Lay
 
 *How it worked:*
 As always, the webcomic XKCD does a great job breaking down a complex bit of code into something understandable:
-![XKCD comic](https://xkcd.com/1354/)
+![XKCD comic](https://imgs.xkcd.com/comics/heartbleed_explanation.png)
 
 Essentially two computers are connected to each other (securely, we hope).  These computers occasionally send a "heartbeat request" -- just a little query asking, "Hey, are we still connected?"  There's a response of just a few bytes to this query, and the request that is sent includes the correct length of the response.  When a computer receives a request, it recieves two pieces of information: the response to be sent, and the length of that response.
 
@@ -83,9 +83,6 @@ There was also a compiler flag which would have caught the unreachable code occu
 
 We've also talked about coding conventions and how important they can be to a common understanding among programmers.  It's worth noting that many professional coding standards require braces around all if statements, including one liners like those above.  For example, [the Mozilla guidlines](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style#Naming_and_Formatting_code) (makers of Firefox among other software) specifically state:
 > Always brace controlled statements, even a single-line consequent of if else else. This is redundant, typically, but it avoids dangling else bugs, so it's safer at scale than fine-tuning.
-
-
-
 
 *Readings:*
 * https://www.imperialviolet.org/2014/02/22/applebug.html
