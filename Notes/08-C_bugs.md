@@ -109,8 +109,21 @@ An example: `4195835/3145727` would return 1.333**739068902037589** instead of t
 * https://www.techradar.com/news/computing-components/processors/pentium-fdiv-the-processor-bug-that-shook-the-world-1270773
 
 ## Ariane 5 Flight 501 (1996)
-*Concepts relevant to this course:*
-*Why it was a big deal:*  It crashed a spacecraft.  Do I really need to go on?
-*How it worked*
-*Readings*
+*Concepts relevant to this course:* This is primarily a story about data representation, particularly floating point vs. integer data.  However, overflow and rounding errors also prominently play a role as does the use of legacy software which is a common practice in the software industry.
 
+*Why it was a big deal:*  It caused spacecraft to destory itself 30 seconds after liftoff.  Do I really need to go on?  The European Space Agency had been using the predecessor Ariane 4 rocket for over 15 years.  The new Ariane 5 was meant to help the ESA be a major player in international space exploration.  The Ariane 4 was extremely solid, with no failures in its launch history.  However, the Ariane 5 was significantly bigger and could thus carry a much larger payload into space.  At 30 seconds after liftoff, the rocket went horribly off course, triggering the self-destruct mechanism which destroyed the rocket (and it's 400 million dollar payload) about 2.5 miles above Earth's surface.
+
+A post-mortem of the rocket's 
+
+*How it worked:* Due to budget and time constraints the ESA reused software from the Ariane 4 in the Ariane 5.  Specifically, the navigation system software and the flight path optimization libraries were partially reused.  Just before the rocket broke apart, the Internal Reference System (the system responsible for tracking where the rocket is) sent bad data to the Flight Control System.  The control system responded to the bad data by altering the rocket's course in a way which caused parts of the rocket to break apart and the self-destruct sequence to trigger.  
+
+The inquiry found that a 64-bit floating point number variable was cast to a signed 16-bit integer value.  However, the floating point value was too large to be stored in the 16-bit integer variable resulting in an overflow and a very small negative number.  This code had been reused wholesale from the Ariane 4.  However, the Ariane 4 was not as powerful as the Ariane 5 and thus went at slower speeds and had lower maximum velocity calculations.  As soon as the Ariane 5 surpassed the Ariane 4's capabilities (at 30 seconds post-liftoff), the software bug occurred.  There was no exception handling code and the guidance system eventually returned an error code which was only intended for debugging purposes.  This value was then passed on to the Flight Control System.
+
+It turns out the software which caused the error wasn't essential!  From the NYTimes:
+> One extra absurdity: the calculation containing the bug, which shut down the guidance system, which confused the on-board computer, which forced the rocket off course, actually served no purpose once the rocket was in the air. Its only function was to align the system before launch. So it should have been turned off. But engineers chose long ago, in an earlier version of the Ariane, to leave this function running for the first 40 seconds of flight -- a "special feature" meant to make it easy to restart the system in the event of a brief hold in the countdown.
+
+*Readings*
+* http://sunnyday.mit.edu/nasa-class/Ariane5-report.html
+* https://www.nytimes.com/1996/12/01/magazine/little-bug-big-bang.html
+* http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html
+* https://hackernoon.com/crash-and-burn-a-short-story-of-ariane-5-flight-501-3a3c50e0e284
