@@ -2,7 +2,8 @@
 
 ## Heartbleed bug (April 2014)
 
-*Aspect of the course:* We've talked a lot about buffer overruns in C this semester and the need to program defensively.  This is a great case study in why you need to be aware of this particular aspect of C programming.
+*Aspect of the course:* 
+We've talked a lot about buffer overruns in C this semester and the need to program defensively.  This is a great case study in why you need to be aware of this particular aspect of C programming.
 
 *Why was it a big deal*: 
 This bug was in a code base known as OpenSSL.  SSL stands for Secure Sockets Layer and is a protocol (set of rules) by which information is securely passed around the internet.  The bug was in a crucial bit of C code which implemented this (and other) protocols.  OpenSSL is used by many, many webservers which need secure communication (17% of all those on the internet, actually) so this was a widespread problem.  This bug allowed malicious attackers to gain access to memory which could have been used to store decrypted passwords.
@@ -50,7 +51,8 @@ pl = p;
 *Aspect of the course:*
 This is a really simple C programming bug, but it demonstrates the need for a solid testing infrastructure, following coding conventions, and compiler warning/error flags.
 
-*Why was it a big deal?:* Like the previous bug, this one occured in some security software crucial to the Internet's functionality.  It occured in Apple's SecureTransport code (their version of SSL/TLS, similar to OpenSSL). Apple uses this library for most of it security checking, and the code is native to the iOS operating system.  This meant that the bug affected virtually all iOS devices including iPads, iPhones, iPod Touches, and some Mac computers running OSX.
+*Why was it a big deal?:* 
+Like the previous bug, this one occured in some security software crucial to the Internet's functionality.  It occured in Apple's SecureTransport code (their version of SSL/TLS, similar to OpenSSL). Apple uses this library for most of it security checking, and the code is native to the iOS operating system.  This meant that the bug affected virtually all iOS devices including iPads, iPhones, iPod Touches, and some Mac computers running OSX.
 
 Unlike the previous bug, this one impacted whether or not a website was susceptible to a "Man in the Middle" attack (MitM).  This bug allows a computer to insert itself in the middle (hence, the name) of communication between a client (your computer) and a server (let's say google.com).  You would think you're visiting google.com when in fact, you're only visiting a spoofed website designed to look like google.com.  
 
@@ -58,7 +60,6 @@ Unlike the previous bug, this one impacted whether or not a website was suscepti
 This problematic code executes when the device connects to a secure website (one with `https` in the URL), and through a series of steps, the website proves that it is, in fact, who it says it is via web certificates.  The code should have rejected websites which couldn't pass the tests and only authenticated those which could.
 
 *C code:*
-
 See if you can spot the error:
 ```
 ...
@@ -91,7 +92,8 @@ We've also talked about coding conventions and how important they can be to a co
 * https://www.theguardian.com/technology/2014/feb/25/apples-ssl-iphone-vulnerability-how-did-it-happen-and-what-next
 
 ## Intel's FDIV Bug (1994)
-*Aspect of the course:* Instruction Set Architectures.   In fact, `FDIV` is the x86 assembly language instruction for floating point division.  While this bug was a hardware bug, not a software one, it demonstrates the importance of understanding what results your software should be giving you before running it so that you can "sanity check" the results.  Moreover, it demonstrates the important of adhering to international standards in storage and usage of data such as the IEEE-754 standard we discussed for storing single and double precision floating point numbers. 
+*Aspect of the course:* 
+Instruction Set Architectures.  In fact, `FDIV` is the x86 assembly language instruction for floating point division.  While this bug was a hardware bug, not a software one, it demonstrates the importance of understanding what results your software should be giving you before running it so that you can "sanity check" the results.  Moreover, it demonstrates the important of adhering to international standards in storage and usage of data such as the IEEE-754 standard we discussed for storing single and double precision floating point numbers. 
 
 *Why was it a big deal?:*  
 The Pentium line of processors was (at the time) a new release for Intel.  The first, the Pentium-75, was billed as the fastest, most technologically advanced processor and was marketed as a substantial upgrade from the previous line of Intel's chips, the 486s.  However, a math professor at the small school of Lynchburg College found that floating point division results did not match what he was expecting.  In short, he ran numerous calculations and found that these calculations did not match the theoretically expected values he derived via mathematical formulas.  He set out to understand why, examining his code and proofs for logic errors, writing the program in multiple languages, and running his program(s) and many different computers from different manufacturing facilities.  His findings were confirmed by other scientists and mathematicians.  Eventually, Intel was forced to admit it was a bug which they had discovered earlier but were trying to ignore.  In a series of PR gaffes, Intel first offered new (error-free) chips only to users who could prove they needed highly accurate mathematical results.  The ensuing outcry meant that Intel eventually offered new chips to anyone who asked leading to a $500 million "recall" of the chips and doing serious damage to Intel's brand (eg. see [this list of jokes at Intel's expense](http://www.columbia.edu/~sss31/rainbow/pentium.jokes.html).
@@ -109,16 +111,21 @@ An example: `4195835/3145727` would return 1.333**739068902037589** instead of t
 * https://www.techradar.com/news/computing-components/processors/pentium-fdiv-the-processor-bug-that-shook-the-world-1270773
 
 ## Ariane 5 Flight 501 (1996)
-*Concepts relevant to this course:* This is primarily a story about data representation, particularly floating point vs. integer data.  However, overflow and rounding errors also prominently play a role as does the use of legacy software which is a common practice in the software industry.
+*Concepts relevant to this course:* 
+This is primarily a story about data representation, particularly floating point vs. integer data.  Overflow errors also prominently play a role as does the use of legacy software which is a common practice in the software industry.
 
-*Why it was a big deal:*  It caused spacecraft to destory itself 30 seconds after liftoff.  Do I really need to go on?  The European Space Agency had been using the predecessor Ariane 4 rocket for over 15 years.  The new Ariane 5 was meant to help the ESA be a major player in international space exploration.  The Ariane 4 was extremely solid, with no failures in its launch history.  However, the Ariane 5 was significantly bigger and could thus carry a much larger payload into space.  At 30 seconds after liftoff, the rocket went horribly off course, triggering the self-destruct mechanism which destroyed the rocket (and it's 400 million dollar payload) about 2.5 miles above Earth's surface.
+*Why it was a big deal:*  
+It caused spacecraft to destory itself 30 seconds after liftoff.  Do I really need to go on?  The European Space Agency had been using the predecessor Ariane 4 rocket for over 15 years.  The new Ariane 5 was meant to help the ESA be a major player in international space exploration.  The Ariane 4 was extremely solid, with no failures in its launch history.  However, the Ariane 5 was significantly bigger and could thus carry a much larger payload into space.  At 30 seconds after liftoff, the rocket went horribly off course, triggering the self-destruct mechanism which destroyed the rocket (and its 400 million dollar payload) about 2.5 miles above Earth's surface.
 
-*How it worked:* Due to budget and time constraints the ESA reused software from the Ariane 4 in the Ariane 5.  Specifically, the navigation system software and the flight path optimization libraries were partially reused.  Just before the rocket broke apart, the Internal Reference System (the system responsible for tracking where the rocket is) sent bad data to the Flight Control System.  The control system responded to the bad data by altering the rocket's course in a way which caused parts of the rocket to break apart and the self-destruct sequence to trigger.  
+*How it worked:* 
+Due to budget and time constraints the ESA reused software from the Ariane 4 in the Ariane 5.  Specifically, the navigation system software and the flight path optimization libraries were partially reused.  Just before the rocket broke apart, the Internal Reference System (the system responsible for tracking where the rocket is) sent bad data to the Flight Control System.  The control system responded to the bad data by altering the rocket's course in a way which caused parts of the rocket to break apart and the self-destruct sequence to trigger.  
 
-The inquiry found that a 64-bit floating point number variable was cast to a signed 16-bit integer value.  However, the floating point value was too large to be stored in the 16-bit integer variable resulting in an overflow and a very small negative number.  This code had been reused wholesale from the Ariane 4.  However, the Ariane 4 was not as powerful as the Ariane 5 and thus went at slower speeds and had lower maximum velocity calculations.  As soon as the Ariane 5 surpassed the Ariane 4's capabilities (at 30 seconds post-liftoff), the software bug occurred.  There was no exception handling code and the guidance system eventually returned an error code which was only intended for debugging purposes.  This value was then passed on to the Flight Control System.
+The inquiry found that a 64-bit floating point number variable was cast to a signed 16-bit integer value.  However, the floating point value was too large to be stored in the 16-bit integer variable resulting in an overflow and a very small negative number.  This code had been reused wholesale from the Ariane 4.  However, the Ariane 4 was not as powerful as the Ariane 5 and thus went at slower speeds and had lower maximum velocity calculations.  As soon as the Ariane 5 surpassed the Ariane 4's capabilities (at 30 seconds post-liftoff), the software bug occurred. There was no exception handling code and the guidance system eventually returned an error code which was only intended for debugging purposes.  This value was then passed on to the Flight Control System.
 
 It turns out the software which caused the error wasn't essential!  From the NYTimes:
 > One extra absurdity: the calculation containing the bug, which shut down the guidance system, which confused the on-board computer, which forced the rocket off course, actually served no purpose once the rocket was in the air. Its only function was to align the system before launch. So it should have been turned off. But engineers chose long ago, in an earlier version of the Ariane, to leave this function running for the first 40 seconds of flight -- a "special feature" meant to make it easy to restart the system in the event of a brief hold in the countdown.
+
+It's important for programmers to know the limitations of their programming language and choices using that language.  Choosing a `short` (signed 16-bit integer type in Java) vs. an `int` (signed 32-bit integer) vs. a `long` (signed 64-bit integer) is a decision which sometimes must be thought about carefully.  Having a solid knowledge of how binary values are computed and what they represent can help you make some of these decisions when your system has memory, space, or running time constraints. 
 
 *Readings*
 * http://sunnyday.mit.edu/nasa-class/Ariane5-report.html
